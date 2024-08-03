@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: pysheetsql
-Version: 0.1
+Version: 0.0.1
 Summary: A package for managing Google Sheets data with gspread
-Author: Syed Abdullah Imam
-Author-email: syedabdullahimam@example.com
+Author: Malanaa
+Author-email: abdullahdotpy@gmail.com
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
@@ -11,3 +11,6 @@ Requires-Python: >=3.6
 License-File: LICENSE
 Requires-Dist: gspread
 Requires-Dist: google-auth
+
+
+pysheetsql is cool and you should use it.
