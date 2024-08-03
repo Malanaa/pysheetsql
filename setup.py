@@ -17,7 +17,4 @@ setup(
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
-    long_description='''
-pysheetsql is cool and you should use it.
-'''
 )
