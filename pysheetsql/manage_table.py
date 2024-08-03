@@ -3,7 +3,7 @@ import gspread
 def AddData(client, table_name, data):
     """
     Adds data to a table.
-
+    
     Args:
         client (SheetClient): The SheetClient client instance.
         table_name (str): The name of the table to add data to.
