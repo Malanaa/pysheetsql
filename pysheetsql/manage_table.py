@@ -87,7 +87,7 @@ def GetDataName(client, table_name, target_main_field_name):
         print(ws.row_values(1)) #printing the headers for refernence
         row_values = ws.row_values(cell.row)
         return row_values
-    except:
+    except gspread.exceptions.SpreadsheetNotFound:
          print("Table not found.")
 
 
@@ -124,7 +124,7 @@ def GetDataID(client, table_name, target_id):
         print(ws.row_values(1)) #printing the headers for refernence
         row_values = ws.row_values(cell.row)
         return row_values
-    except:
+    except gspread.exceptions.SpreadsheetNotFound:
          print("Table Not found")
 
 
