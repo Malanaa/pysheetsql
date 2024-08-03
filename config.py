@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pysheetsql',
-    version='1.0.0',
+    version='1.0.1',
     description='A package for managing Google Sheets data with gspread',
     author='Malanaa',
     author_email='abdullahdotpy@gmail.com',
@@ -20,7 +20,7 @@ setup(
     long_description='''
 # PySheetsQL
 
-`pysheetsql` is a Python package designed to simplify the management of Google Sheets data using the `gspread` library. With this package, you can effortlessly create, update, retrieve, delete, and export Google Sheets data.
+`pysheetsql` is a simple Python library I made to automate logging data to Google Sheets. I have designed the library to perform basic CRUD operations and use it as a small-scale database for static side projects.
 
 ## Installation
 
