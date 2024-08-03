@@ -1,23 +1,19 @@
-from setuptools import setup, find_packages
+Metadata-Version: 2.1
+Name: pysheetsql
+Version: 1.0.0
+Summary: A package for managing Google Sheets data with gspread
+Author: Malanaa
+Author-email: abdullahdotpy@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: gspread
+Requires-Dist: google-auth
 
-setup(
-    name='pysheetsql',
-    version='1.0.0',
-    description='A package for managing Google Sheets data with gspread',
-    author='Malanaa',
-    author_email='abdullahdotpy@gmail.com',
-    packages=find_packages(),
-    install_requires=[
-        'gspread',
-        'google-auth',
-    ],
-    classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-    ],
-    python_requires='>=3.6',
-    long_description='''
+
 # PySheetsQL
 
 `pysheetsql` is a Python package designed to simplify the management of Google Sheets data using the `gspread` library. With this package, you can effortlessly create, update, retrieve, delete, and export Google Sheets data.
@@ -71,6 +67,3 @@ Replace `path/to/credentials.json` with the actual path to your downloaded `cred
 
 For more usage information, visit the [PySheetsQL Documentation](https://malanaa.github.io/pysheetsql/).
 
-''',
-long_description_content_type='text/markdown',
-)
