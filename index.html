@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PySheetsQL Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .example {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .example pre {
+            margin: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PySheetsQL Documentation</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Overview</h2>
+            <p><code>pysheetsql</code> is a Python package for managing Google Sheets data using the <code>gspread</code> library. It provides an easy-to-use interface for creating, updating, retrieving, deleting, and exporting Google Sheets data.</p>
+        </section>
+
+        <section>
+            <h2>Installation</h2>
+            <p>To install <code>pysheetsql</code>, use pip:</p>
+            <pre><code>pip install pysheetsql</code></pre>
+        </section>
+
+        <section>
+            <h2>Getting Started</h2>
+            <h3>Google API Credentials</h3>
+            <p>To use <code>pysheetsql</code>, you need to obtain Google Sheets API credentials. Follow these steps to get your <code>credentials.json</code> file:</p>
+            <ol>
+                <li><strong>Create a Google Cloud Project:</strong>
+                    <ul>
+                        <li>Visit the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
+                        <li>Click on "Select a project" and then "New Project".</li>
+                        <li>Enter a project name and click "Create".</li>
+                    </ul>
+                </li>
+                <li><strong>Enable APIs:</strong>
+                    <ul>
+                        <li>Navigate to the <a href="https://console.developers.google.com/apis/library" target="_blank">API Library</a>.</li>
+                        <li>Search for and enable the <a href="https://developers.google.com/sheets/api" target="_blank">Google Sheets API</a>.</li>
+                        <li>Also, enable the <a href="https://developers.google.com/docs/api" target="_blank">Google Docs API</a>.</li>
+                    </ul>
+                </li>
+                <li><strong>Create Credentials:</strong>
+                    <ul>
+                        <li>Go to the <a href="https://console.developers.google.com/apis/credentials" target="_blank">Credentials page</a>.</li>
+                        <li>Click on "Create Credentials" and select "Service account".</li>
+                        <li>Follow the prompts to set up the service account.</li>
+                        <li>After creating the service account, click "Create Key" and choose JSON format. This will download your <code>credentials.json</code> file.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Setup</h3>
+            <p>Create a <code>SheetClient</code> object to interact with Google Sheets:</p>
+            <div class="example">
+                <pre><code>from pysheetsql.start import SheetClient
+
+client = SheetClient(
+    scopes=["https://www.googleapis.com/auth/spreadsheets"],
+    credentials_file_path="path/to/credentials.json"
+)</code></pre>
+                <p>Replace <code>"path/to/credentials.json"</code> with the actual path to your downloaded <code>credentials.json</code> file.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Functions</h2>
+            <h3>CreateTable</h3>
+            <p>Creates a table in Google Sheets.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.table import CreateTable
+
+CreateTable(client, "StudentRecords", ["Name", "Age", "Grade"])</code></pre>
+            </div>
+
+            <h3>DeleteTable</h3>
+            <p>Deletes a table from Google Sheets.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.table import DeleteTable
+
+DeleteTable(client, "StudentRecords")</code></pre>
+            </div>
+
+            <h3>ListTables</h3>
+            <p>Lists all tables available in your Google Sheets account.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.table import ListTables
+
+ListTables(client)</code></pre>
+            </div>
+
+            <h3>ExportTable</h3>
+            <p>Exports a table to a CSV file.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.table import ExportTable
+
+ExportTable(client, "StudentRecords")</code></pre>
+            </div>
+
+            <h3>AddData</h3>
+            <p>Adds data to a table in Google Sheets.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import AddData
+
+AddData(client, "StudentRecords", ["John Doe", 20, "A"])</code></pre>
+            </div>
+
+            <h3>GetDataName</h3>
+            <p>Retrieves a row of data from a table based on the main field name.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import GetDataName
+
+data = GetDataName(client, "StudentRecords", "John Doe")
+print(data)</code></pre>
+            </div>
+
+            <h3>GetDataID</h3>
+            <p>Retrieves a row of data from a table based on the primary ID.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import GetDataID
+
+data = GetDataID(client, "StudentRecords", 1)
+print(data)</code></pre>
+            </div>
+
+            <h3>UpdateDataName</h3>
+            <p>Updates a value in a row based on the main field name.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import UpdateDataName
+
+UpdateDataName(client, "StudentRecords", "John Doe", "Age", "21")</code></pre>
+            </div>
+
+            <h3>UpdateDataID</h3>
+            <p>Updates a value in a row based on the primary ID.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import UpdateDataID
+
+UpdateDataID(client, "StudentRecords", 1, "Age", "22")</code></pre>
+            </div>
+
+            <h3>DeleteData</h3>
+            <p>Deletes a row based on the main field name.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import DeleteData
+
+DeleteData(client, "StudentRecords", "John Doe")</code></pre>
+            </div>
+
+            <h3>GetAllData</h3>
+            <p>Retrieves all rows of data from a table as a list of lists.</p>
+            <div class="example">
+                <pre><code>from pysheetsql.manage_table import GetAllData
+
+data = GetAllData(client, "StudentRecords")
+print(data)</code></pre>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Malanaa. All rights reserved.</p>
+    </footer>
+</body>
+</html>
