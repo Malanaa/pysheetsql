@@ -18,13 +18,93 @@
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <h1 class="text-3xl font-bold text-gray-800">pysheetsql Documentation</h1>
             <nav class="mt-4 md:mt-0">
-                <a href="#functions" class="mx-4 text-gray-700 hover:text-blue-600">Usage</a>
+                <a href="#functions" class="mx-4 text-gray-700 hover:text-blue-600">Documentation</a>
             </nav>
         </div>
     </header>
     <main class="container mx-auto p-8">
         <section id="functions">
-            <h2 class="text-2xl font-semibold mb-4 border-b-2 border-gray-300 pb-2">Usage</h2>
+            <h2 class="text-2xl font-semibold mb-4 border-b-2 border-gray-300 pb-2">Docs</h2>
+
+<!-- SheetClient Class -->
+<div class="mb-8 bg-white shadow-md rounded-lg p-4">
+    <h3 class="text-xl font-semibold mb-2">SheetClient</h3>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">from pysheetsql.start import SheetClient</code></pre>
+    <p class="mb-2"><strong>Description:</strong></p>
+    <p class="mb-2">Builds a client for accessing Google API.</p>
+    <p class="mb-2"><strong>Arguments:</strong></p>
+    <ul class="list-disc list-inside mb-2">
+        <li><strong>scopes:</strong> <code class="text-blue-600">list of str</code> - An array of strings specifying the API scopes.</li>
+        <li><strong>credentials_file_path:</strong> <code class="text-blue-600">str</code> - The path to the JSON file containing your credentials.</li>
+    </ul>
+    <p class="mb-2"><strong>Returns:</strong></p>
+    <p class="mb-2">client: The client object for accessing Google APIs.</p>
+    <p class="mb-2"><strong>Raises:</strong> <code class="text-red-600">Exception</code> - If an error occurs while creating the client.</p>
+    <p><strong>Example:</strong></p>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">client = SheetClient(["https://www.googleapis.com/auth/spreadsheets"], "path/to/credentials.json")</code></pre>
+</div>
+
+
+            <!-- CreateTable Function -->
+<div class="mb-8 bg-white shadow-md rounded-lg p-4">
+    <h3 class="text-xl font-semibold mb-2">CreateTable</h3>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">from pysheetsql.table import CreateTable</code></pre>
+    <p class="mb-2"><strong>Arguments:</strong></p>
+    <ul class="list-disc list-inside mb-2">
+        <li><strong>client:</strong> <code class="text-blue-600">SheetClient</code> - The SheetClient client instance.</li>
+        <li><strong>table_name:</strong> <code class="text-blue-600">str</code> - The name of the table.</li>
+        <li><strong>fields:</strong> <code class="text-blue-600">list of str</code> - A list of field names (the first field is considered the class name).</li>
+        <li><strong>primary_key:</strong> <code class="text-blue-600">bool, optional</code> - Whether to include a primary key field. Default is True.</li>
+    </ul>
+    <p class="mb-2"><strong>Returns:</strong> None</p>
+    <p class="mb-2"><strong>Raises:</strong> <code class="text-red-600">TypeError</code> - If `table_name` is not a string or `fields` is not a list of strings. <br> Table already exists if `table_name` has already been used.</p>
+    <p><strong>Example:</strong></p>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">CreateTable(client, "StudentRecords", ["Name", "Age", "Grade"])</code></pre>
+</div>
+
+<!-- DeleteTable Function -->
+<div class="mb-8 bg-white shadow-md rounded-lg p-4">
+    <h3 class="text-xl font-semibold mb-2">DeleteTable</h3>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">from pysheetsql.table import DeleteTable</code></pre>
+    <p class="mb-2"><strong>Arguments:</strong></p>
+    <ul class="list-disc list-inside mb-2">
+        <li><strong>client:</strong> <code class="text-blue-600">SheetClient</code> - The SheetClient client instance.</li>
+        <li><strong>table_name:</strong> <code class="text-blue-600">str</code> - The name of the table you want to delete.</li>
+    </ul>
+    <p class="mb-2"><strong>Returns:</strong> None</p>
+    <p class="mb-2"><strong>Raises:</strong> <code class="text-red-600">TypeError</code> - If `table_name` is not a string. <br> Table not found: If the table is not found.</p>
+    <p><strong>Example:</strong></p>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">DeleteTable(client, "StudentRecords")</code></pre>
+</div>
+
+<!-- ListTables Function -->
+<div class="mb-8 bg-white shadow-md rounded-lg p-4">
+    <h3 class="text-xl font-semibold mb-2">ListTables</h3>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">from pysheetsql.table import ListTables</code></pre>
+    <p class="mb-2"><strong>Arguments:</strong></p>
+    <ul class="list-disc list-inside mb-2">
+        <li><strong>client:</strong> <code class="text-blue-600">SheetClient</code> - The SheetClient client instance.</li>
+    </ul>
+    <p class="mb-2"><strong>Returns:</strong> None</p>
+    <p><strong>Example:</strong></p>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">ListTables(client)</code></pre>
+</div>
+
+<!-- ExportTable Function -->
+<div class="mb-8 bg-white shadow-md rounded-lg p-4">
+    <h3 class="text-xl font-semibold mb-2">ExportTable</h3>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">from pysheetsql.table import ExportTable</code></pre>
+    <p class="mb-2"><strong>Arguments:</strong></p>
+    <ul class="list-disc list-inside mb-2">
+        <li><strong>client:</strong> <code class="text-blue-600">SheetClient</code> - The SheetClient client instance.</li>
+        <li><strong>table_name:</strong> <code class="text-blue-600">str</code> - The name of the table you want to export.</li>
+    </ul>
+    <p class="mb-2"><strong>Returns:</strong> None</p>
+    <p class="mb-2"><strong>Raises:</strong> <code class="text-red-600">TypeError</code> - If `table_name` is not a string. <br> <code class="text-red-600">gspread.exceptions.SpreadsheetNotFound</code> - If the table does not exist.</p>
+    <p><strong>Example:</strong></p>
+    <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">ExportTable(client, "StudentRecords")</code></pre>
+</div>
+
 
             <!-- AddData Function -->
             <div class="mb-8 bg-white shadow-md rounded-lg p-4">
