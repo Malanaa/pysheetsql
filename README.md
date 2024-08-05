@@ -42,7 +42,10 @@ from pysheetsql.start import SheetClient
 
 ```python
 client = SheetClient(
-    scopes=["https://www.googleapis.com/auth/spreadsheets"],
+    scopes = [
+'https://www.googleapis.com/auth/spreadsheets',
+'https://www.googleapis.com/auth/drive'
+]
     credentials_file_path="path/to/credentials.json"
 )
 ```
