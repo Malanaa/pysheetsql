@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pysheetsql',
-    version='1.0.1',
+    version='1.0.2',
     description='A package for managing Google Sheets data with gspread',
     author='Malanaa',
     author_email='abdullahdotpy@gmail.com',

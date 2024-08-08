@@ -3,6 +3,7 @@ from gspread.utils import ExportFormat
 
 
 
+
 def CreateTable(client,table_name,fields, primary_key=True):
     """
     Creates a table.
@@ -137,3 +138,46 @@ def ExportTable(client, table_name):
             exported_file.write(file.decode("utf-8"))
     except gspread.exceptions.SpreadsheetNotFound:
             print("This table does not exist.")
+
+
+def ShareTables(client, emails, table_name=None):
+    ''' 
+    Share Tables:
+    
+    Args:
+    client: sheet client you built with the SheetClient function
+    emails: A lists of string specifiying the user email(each element)
+    table_name: Default=None, gives user permission to the specific table. if table_name is not specificed every table under the service account will be given permission.
+
+    Raises:
+    gspread.exceptions.SpreadsheetNotFound if spreadsheet not found.
+    error defined
+
+    Return:
+    None
+
+    '''
+
+    if table_name:
+        try:
+            sh = client.open(table_name)
+            for email in emails:
+                sh.share(email, perm_type='user', role='writer') #read docs add a veiwer role too. accepted params       
+        except gspread.exceptions.SpreadsheetNotFound:
+                print("This table does not exist.")
+                return None
+    else:
+        try:
+            tables = ListTables(client)
+            if tables:
+                for table in tables:
+                    sh = client.open(table_name)
+                    for email in emails:
+                        sh.share(email, perm_type='user', role='writer')
+            else:
+                print("No tables found.")
+                return None
+        except BaseException as e:
+            print(f"{e}")
+            return None
+        

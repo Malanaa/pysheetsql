@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pysheetsql
-Version: 1.0.1
+Version: 1.0.2
 Summary: A package for managing Google Sheets data with gspread
 Author: Malanaa
 Author-email: abdullahdotpy@gmail.com
