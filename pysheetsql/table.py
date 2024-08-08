@@ -151,15 +151,12 @@ def ShareTables(client, emails, table_name=None):
 
     Raises:
     gspread.exceptions.SpreadsheetNotFound if spreadsheet not found.
-    error as {e}
-
+    error defined
 
     Return:
     None
 
     '''
-
-    #Building client
 
     if table_name:
         try:

@@ -200,6 +200,21 @@
             </div>
         </section>
 
+        <!-- ShareTables Function -->
+        <div class="mb-8 bg-white shadow-md rounded-lg p-4">
+            <h3 class="text-xl font-semibold mb-2">ShareTables</h3>
+            <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">from pysheetsql.manage_table import UpdateDataID</code></pre>
+            <p class="mb-2"><strong>Arguments:</strong></
+                <li><strong>client:</strong> <code class="text-blue-600">SheetClient</code> - The SheetClient client instance.</li>
+                <li><strong>emails:</strong> <code class="text-blue-600">str</code> List of emails that you want to have access to the tables</li>
+                <li><strong>table_name:</strong> <code class="text-blue-600">int</code>Specific table you want to give the emails access too. Defualt is none so if not specificed user will get access to every table under the service account.</li>
+            <p class="mb-2"><strong>Returns:</strong> None</p>
+            <p class="mb-2"><strong>Raises:</strong> <code class="text-red-600">TypeError</code>, <code class="text-red-600">gspread.exceptions.SpreadsheetNotFound</code></p>
+            <p><strong>Example:</strong></p>
+            <pre class="bg-gray-50 p-4 rounded-lg border border-gray-200"><code class="text-gray-700">ShareTables(client, ["xyz@gmail.com", "yxz@gmail.com"], table_name="UserData")</code></pre>
+        </div>
+    </section>
+
     
         
     </main>
